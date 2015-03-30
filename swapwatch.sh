@@ -3,8 +3,8 @@
 #2.0.0
 #rewrite by rlong
 
-LOGDIR="/usr/local/lp/logs"
-TMPFILE="/usr/local/lp/temp/swapwatch.results"
+LOGDIR="/usr/local/sw/logs"
+TMPFILE="/usr/local/sw/temp/swapwatch.results"
 
 #Create and clear TMPFILE
 touch $TMPFILE
@@ -33,7 +33,7 @@ else
   then
     loadthreshold=5
     swapthreshold=524288
-    contact="support@liquidweb.com"
+    contact="support@DOMAIN.com"
   fi
 
   #check if we should run. either can trigger it
@@ -69,7 +69,7 @@ else
 	echo "" >> $TMPFILE
 	echo "Process List" >> $TMPFILE
 	echo "" >> $TMPFILE
-	/bin/ps faux >> $TMPFILE 2>&1	
+	/bin/ps faux >> $TMPFILE 2>&1
 	echo "" >> $TMPFILE
 	echo "" >> $TMPFILE
 	echo "Processes sorted by RESIDENT memory" >> $TMPFILE
@@ -80,7 +80,7 @@ else
 
     #Send the email to the $contact address
 	subject="[LW] Swapwatch.sh on $(hostname)"
-	contents=$(cat $TMPFILE)    
+	contents=$(cat $TMPFILE)
 
 	/usr/sbin/sendmail "$contact" <<EOF
 subject:$subject

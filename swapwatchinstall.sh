@@ -3,11 +3,11 @@
 
 ###############################################################################
 
-APPDIR="/usr/local/lp/apps/swapwatch"
-LOGDIR="/usr/local/lp/logs"
-CONFDIR="/usr/local/lp/configs/swapwatch"
-swapurl="http://layer3.liquidweb.com/monitoring/swapwatch.sh" #this will be appserv or nagilink
-updateurl="http://layer3.liquidweb.com/monitoring/swapupdate.sh" #this will be appserv or nagilink
+APPDIR="/usr/local/sw/apps/swapwatch"
+LOGDIR="/usr/local/sw/logs"
+CONFDIR="/usr/local/sw/configs/swapwatch"
+swapurl="http://DOMAIN.COM/swapwatch.sh" #this will be appserv or nagilink
+updateurl="http://DOMAIN.com/swapupdate.sh" #this will be appserv or nagilink
 
 ###############################################################################
 
@@ -25,12 +25,12 @@ loadthresh=$( expr $cpus \* 5 )
 #memory is: 2G thresh for 7+, 1G for 2+, .5G for less than that
 G=1048576 #your a gigabyte
 if [ $memory -gt $( expr 7 \* $G ) ]
-then   
+then
         swapthresh=$( expr 2 \* $G )
 elif [ $memory -gt $( expr 2 \* $G ) ]
-then   
+then
         swapthresh=$G
-else   
+else
         swapthresh=$( expr $G / 2 )
 fi
 
